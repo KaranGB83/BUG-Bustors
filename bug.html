@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bug Busters Competition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            background: #34495e;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .editor-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .run-btn {
+            background: #27ae60;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .run-btn:hover {
+            background: #2ecc71;
+        }
+
+        .output {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 0.5rem;
+            min-height: 50px;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>🐞 Bug Busters Competition</h1>
+        <p>Debug the code, bust the bugs, and win!</p>
+    </header>
+
+    <nav>
+        <a href="#rules">Rules</a>
+        <a href="#python">Python Challenges</a>
+    </nav>
+
+    <main>
+        <section id="rules">
+            <h2>Competition Rules</h2>
+            <ul>
+                <li>Fix the buggy Python code snippets below.</li>
+                <li>Errors include syntax, logic, and runtime issues.</li>
+                <li>Time limit: 5–20 minutes per snippet.</li>
+                <li>Points awarded for correct fixes and explanations.</li>
+            </ul>
+        </section>
+
+        <section id="python">
+            <h2>🐍 Python Buggy Codes (Interactive)</h2>
+
+            <!-- Repeat this block for each buggy snippet -->
+            <div class="editor-container">
+                <h3>1. Syntax Error</h3>
+                <textarea id="editor1">print("Hello World'</textarea>
+                <button class="run-btn" onclick="runCode('editor1','output1')">Run</button>
+                <div id="output1" class="output"></div>
+            </div>
+
+            <div class="editor-container">
+                <h3>2. Indentation Error</h3>
+                <textarea id="editor2">for i in range(5):
+print(i)</textarea>
+                <button class="run-btn" onclick="runCode('editor2','output2')">Run</button>
+                <div id="output2" class="output"></div>
+            </div>
+
+            <div class="editor-container">
+                <h3>3. Variable Not Defined</h3>
+                <textarea id="editor3">x = 10
+y = z + 5
+print(y)</textarea>
+                <button class="run-btn" onclick="runCode('editor3','output3')">Run</button>
+                <div id="output3" class="output"></div>
+            </div>
+
+            <div class="editor-container">
+                <h3>4. Wrong Function Call</h3>
+                <textarea id="editor4">def greet(name):
+    return "Hello " + name
+
+print(greet())</textarea>
+                <button class="run-btn" onclick="runCode('editor4','output4')">Run</button>
+                <div id="output4" class="output"></div>
+            </div>
+
+            <div class="editor-container">
+                <h3>5. Type Error</h3>
+                <textarea id="editor5">num = 5
+text = " apples"
+print(num + text)</textarea>
+                <button class="run-btn" onclick="runCode('editor5','output5')">Run</button>
+                <div id="output5" class="output"></div>
+            </div>
+
+            <div class="editor-container">
+                <h3>6. Infinite Loop</h3>
+                <textarea id="editor6">i = 0
+while i < 5:
+    print(i)</textarea>
+                <button class="run-btn" onclick="runCode('editor6','output6')">Run</button>
+                <div id="output6" class="output"></div>
+            </div>
+
+            <div class="editor-container">
+                <h3>7. Wrong Operator</h3>
+                <textarea id="editor7">a = 10
+b = 3
+print(a // b)  # Expected 3.33</textarea>
+                <button class="run-btn" onclick="runCode('editor7','output7')">Run</button>
+                <div id="output7" class="output"></div>
+            </div>
+
+            <div class="editor-container">
+                <h3>8. List Index Error</h3>
+                <textarea id="editor8">fruits = ["apple", "banana"]
+print(fruits[2])</textarea>
+                <button class="run-btn" onclick="runCode('editor8','output8')">Run</button>
+                <div id="output8" class="output"></div>
+            </div>
+
+            <div class="editor-container">
+                <h3>9. Wrong Import</h3>
+                <textarea id="editor9">import maths
+print(maths.sqrt(16))</textarea>
+                <button class="run-btn" onclick="runCode('editor9','output9')">Run</button>
+                <div id="output9" class="output"></div>
+            </div>
+
+            <div class="editor-container">
+                <h3>10. Logic Error</h3>
+                <textarea id="editor10">def is_even(n):
+    if n % 2 == 1:
+        return True
+    else:
+        return False</textarea>
+                <button class="run-btn" onclick="runCode('editor10','output10')">Run</button>
+                <div id="output10" class="output"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Bug Busters | Hosted on GitHub Pages</p>
+    </footer>
+
+    <!-- CodeMirror JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
+
+    <!-- Skulpt JS -->
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+
+    <script>
+        // Initialize CodeMirror editors
+        var editors = {};
+        function initEditor(id) {
+            editors[id] = CodeMirror.fromTextArea(document.getElementById(id), {
+                lineNumbers: true,
+                mode: "python",
+                theme: "default"
+            });
+        }
+        for (let i = 1; i <= 10; i++) {
+            initEditor("editor" + i);
+        }
+
+        // Run Python code with Skulpt
+        function runCode(editorId, outputId) {
+            var code = editors[editorId].getValue();
+            var outputElement = document.getElementById(outputId);
+            outputElement.innerHTML = "";
+
+            function outf(text) {
+                outputElement.innerHTML += text + "<br>";
+            }
+
+            Sk.configure({ output: outf, read: builtinRead });
+            Sk.misceval.asyncToPromise(function () {
+                return Sk.importMainWithBody("<stdin>", false, code, true);
+            }).catch(function (err) {
+                outputElement.innerHTML = "Error: " + err.toString();
+            });
+        }
+
+        function builtinRead(x) {
+            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+                throw "File not found: '" + x + "'";
+            return Sk.builtinFiles["files"][x];
+        }
+        </script>
+    </body>
+</html>
